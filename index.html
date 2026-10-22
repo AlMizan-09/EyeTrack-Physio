@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EyeTrack Physio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Header -->
+      <header class="app-header">
+        <div class="logo-title">
+          <div class="logo-icon">🎯</div>
+          <div>
+            <h1>EyeTrack <span>Physio</span></h1>
+            <p class="subtitle">Visual tracking exercise prototype</p>
+          </div>
+        </div>
+        <span class="badge">HACKATHON MVP · NO DEVICE REQUIRED</span>
+      </header>
+
+      <!-- Controls Section -->
+      <main class="main-content">
+        <section class="card settings-card">
+          <h2>Session settings</h2>
+
+          <div class="field-group">
+            <label>Exercise mode</label>
+            <select id="exerciseMode">
+              <option value="Figure-of-8 pattern">Figure-of-8 pattern</option>
+              <option value="Smooth tracking">Smooth tracking</option>
+              <option value="Saccadic movement">Saccadic movement</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <div class="label-row">
+              <label>Light speed</label>
+              <span id="speedValue" class="highlight-text">1.5x</span>
+            </div>
+            <div class="speed-options">
+              <button class="speed-btn" onclick="setSpeed('0.5x')">0.5x</button>
+              <button class="speed-btn" onclick="setSpeed('1x')">1x</button>
+              <button class="speed-btn active" onclick="setSpeed('1.5x')">
+                1.5x
+              </button>
+              <button class="speed-btn" onclick="setSpeed('2x')">2x</button>
+              <button class="speed-btn" onclick="setSpeed('3x')">3x</button>
+            </div>
+            <div class="speed-range-text">
+              <span>🐢 Slow</span>
+              <span>Fast ⚡</span>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label>Session duration</label>
+            <select id="sessionDuration">
+              <option value="30 seconds (demo)">30 seconds (demo)</option>
+              <option value="1 minute">1 minute</option>
+              <option value="2 minutes">2 minutes</option>
+            </select>
+          </div>
+
+          <div class="button-group">
+            <button
+              id="startBtn"
+              class="btn btn-primary"
+              onclick="startSession()"
+            >
+              ▶ Start
+            </button>
+            <button class="btn btn-secondary" onclick="pauseSession()">
+              ⏸ Pause
+            </button>
+          </div>
+          <button class="btn btn-danger" onclick="resetSession()">
+            🔄 Reset
+          </button>
+
+          <p class="info-text">
+            Choose a speed multiplier: 0.5x is half speed, 1x is normal speed,
+            and 2x is twice normal speed.
+          </p>
+        </section>
+
+        <!-- Exercise Box Area -->
+        <section class="card exercise-card">
+          <div class="exercise-header">
+            <h3>Exercise area</h3>
+            <span id="statusBadge" class="status-badge">Ready to begin</span>
+          </div>
+
+          <div class="canvas-area">
+            <p id="placeholderText">
+              <strong>Your moving target will appear here</strong><br /><br />
+              Choose a mode and press Start.<br />
+              Keep your head comfortably still and follow the target with your
+              eyes.
+            </p>
+          </div>
+
+          <!-- Metrics Footer -->
+          <div class="metrics-grid">
+            <div class="metric-box">
+              <span class="metric-label">Time left</span>
+              <span id="timeLeft" class="metric-value">00:30</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Cycles</span>
+              <span id="cycleCount" class="metric-value">0</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-label">Session</span>
+              <span id="sessionStatus" class="metric-value">Not started</span>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Completion Modal Popup -->
+      <div id="completionModal" class="modal-overlay hidden">
+        <div class="modal-card">
+          <h2>Session complete ✨</h2>
+          <p id="modalDetails">
+            Mode: Figure-of-8 pattern. Speed: 1.5x. Cycles recorded: 7.
+            Duration: 30 seconds (demo).
+          </p>
+          <p class="disclaimer">
+            Cycle count is an app estimate, not verified eye-tracking accuracy.
+          </p>
+          <button class="btn btn-modal" onclick="closeModal()">
+            Back to app
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
