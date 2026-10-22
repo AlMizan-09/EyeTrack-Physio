@@ -8,9 +8,10 @@
     "description": "Visual tracking exercise app for eye rehabilitation and focus practice.",
     "icons": [
       {
-        "src": "icon-512.png",
+        "src": "https://img.icons8.com/fluency/512/visible.png",
         "sizes": "512x512",
-        "type": "image/png"
+        "type": "image/png",
+        "purpose": "any maskable"
       }
     ]
   }
